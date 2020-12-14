@@ -81,11 +81,11 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInf
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting" -Name "Disabled" -Type DWord -Value 1
 Disable-ScheduledTask -TaskName "Microsoft\Windows\Windows Error Reporting\QueueReporting" | Out-Null #>
 
-Write-Host "Restricting Windows Update P2P only to local network..."
+<# Write-Host "Restricting Windows Update P2P only to local network..."
 If (!(Test-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config")) {
     New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" | Out-Null
 }
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" -Name "DODownloadMode" -Type DWord -Value 1
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" -Name "DODownloadMode" -Type DWord -Value 1 #>
 
 Write-Host "Stopping and disabling Diagnostics Tracking Service..."
 Stop-Service "DiagTrack" -WarningAction SilentlyContinue
@@ -114,9 +114,9 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Remote Assistance
 <# Write-Host "Disabling Storage Sense..."
 Remove-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy" -Recurse -ErrorAction SilentlyContinue #>
 
-Write-Host "Stopping and disabling Superfetch service..."
+<# Write-Host "Stopping and disabling Superfetch service..."
 Stop-Service "SysMain" -WarningAction SilentlyContinue
-Set-Service "SysMain" -StartupType Disabled
+Set-Service "SysMain" -StartupType Disabled #>
 
 <# Write-Host "Setting BIOS time to UTC..."
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation" -Name "RealTimeIsUniversal" -Type DWord -Value 1 #>
@@ -155,7 +155,7 @@ Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer
 <# Write-Host "Showing all tray icons..."
 Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" -Name "EnableAutoTray" -Type DWord -Value 0 #>
 
-Write-Host "Enabling NumLock after startup..."
+<# Write-Host "Enabling NumLock after startup..."
 If (!(Test-Path "HKU:")) {
     New-PSDrive -Name HKU -PSProvider Registry -Root HKEY_USERS | Out-Null
 }
@@ -164,7 +164,7 @@ Add-Type -AssemblyName System.Windows.Forms
 If (!([System.Windows.Forms.Control]::IsKeyLocked('NumLock'))) {
     $wsh = New-Object -ComObject WScript.Shell
     $wsh.SendKeys('{NUMLOCK}')
-}
+} #>
 
 <# Write-Host "Changing default Explorer view to This PC..."
 Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "LaunchTo" -Type DWord -Value 1 #>
