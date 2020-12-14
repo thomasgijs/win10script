@@ -199,7 +199,7 @@ $Bloatware = @(
         "Microsoft.Wallet"
         "Microsoft.Whiteboard"
         "Microsoft.WindowsAlarms"
-        "microsoft.windowscommunicationsapps"
+        <# "microsoft.windowscommunicationsapps" #>
         "Microsoft.WindowsFeedbackHub"
         "Microsoft.WindowsMaps"
         "Microsoft.WindowsSoundRecorder"
