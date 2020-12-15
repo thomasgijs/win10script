@@ -38,6 +38,7 @@ $Bloatware = @(
         "Microsoft.WindowsFeedbackHub"
         "Microsoft.WindowsMaps"
         "Microsoft.WindowsSoundRecorder"
+	"Microsoft.XboxGameBar"
         "Microsoft.ZuneMusic"
         "Microsoft.ZuneVideo"
 
