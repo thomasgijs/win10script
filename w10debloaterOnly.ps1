@@ -39,7 +39,10 @@ $Bloatware = @(
         <# "Microsoft.WindowsMaps" #>
         "Microsoft.WindowsSoundRecorder"
 	"Microsoft.Xbox.TCUI"
-	"Microsoft.XboxApp"
+	<# "Microsoft.XboxApp" ">
+	<# wasn't able to remove this (error 0x80073CFA). 
+	Possible solution is to go into unrestricted mode and put developper mode on. 
+	Not comfortable with this. Still most xbox features are removed#>
 	"Microsoft.XboxGameCallableUI"
 	"Microsoft.XboxGameOverlay"
 	"Microsoft.XboxGamingOverlay"
